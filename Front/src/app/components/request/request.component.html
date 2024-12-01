@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="request-container">
+  <h2>API Request</h2>
+
+  <!-- URL Input -->
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input type="text" [(ngModel)]="url" placeholder="Enter API URL" />
+  </div>
+
+  <!-- HTTP Method Select -->
+  <div class="form-group">
+    <label for="method">Method</label>
+    <select [(ngModel)]="method">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="PATCH">PATCH</option>
+      <option value="DELETE">DELETE</option>
+      <option value="OPTIONS">OPTIONS</option>
+    </select>
+  </div>
+
+  <!-- Headers Section -->
+  <div class="headers">
+    <h3>Headers</h3>
+    <div *ngFor="let header of headers; let i = index" class="header-item">
+      <input type="text" [(ngModel)]="header.key" placeholder="Header Key" />
+      <input type="text" [(ngModel)]="header.value" placeholder="Header Value" />
+      <button type="button" (click)="removeHeader(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addHeader()">Add Header</button>
+  </div>
+
+  <!-- Query Parameters Section -->
+  <div class="headers">
+    <h3>Query Parameters</h3>
+    <div *ngFor="let param of queryParams; let i = index" class="header-item">
+      <input type="text" [(ngModel)]="param.key" placeholder="Param Key" />
+      <input type="text" [(ngModel)]="param.value" placeholder="Param Value" />
+      <button type="button" (click)="removeQueryParam(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addQueryParam()">Add Query Parameter</button>
+  </div>
+
+  <!-- Request Body -->
+  <div class="form-group">
+    <label for="body">Body</label>
+    <textarea [(ngModel)]="body" rows="5" placeholder="Enter request body (optional)"></textarea>
+  </div>
+
+  <!-- Description -->
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" [(ngModel)]="description" placeholder="Optional request description" />
+  </div>
+
+  <!-- Send Request Button -->
+  <button (click)="sendRequest()">Send Request</button>
+</div>

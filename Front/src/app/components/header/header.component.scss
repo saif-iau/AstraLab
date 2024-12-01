@@ -1,0 +1,233 @@
+/* Container for the entire application */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height container */
+}
+
+/* Header and Navbar Styles */
+header {
+  background-color: var(--background-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Navbar shadow */
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Keeps header above other content */
+  // width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* Logo Style */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.logo img {
+  border-radius: 15px;
+  width: 100px;
+  height: 50px;
+  margin-right: 1rem;
+}
+
+.logo .title {
+  color: var(--text-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none; /* Hidden by default (desktop) */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: var(--text-color);
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger animation when active */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Navigation Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Active link style */
+.nav-links a.active {
+  background-image: var(--primary-gradient); /* Gradient for active link */
+  font-weight: 550;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 2px solid transparent;
+}
+
+/* Hover effect for links */
+.nav-links a:hover {
+  background-image: var(--primary-gradient);
+  color: transparent;
+  background-clip: text;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Nav Links */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px; /* Below the navbar */
+    right: 0;
+    flex-direction: column;
+    background-color: var(--background-color);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: none; /* Hidden on mobile by default */
+    gap: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex; /* Show when hamburger is active */
+  }
+}
+/* Theme Toggle Container */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Hide the original checkbox */
+#theme-toggle-checkbox {
+  display: none;
+}
+
+/* Custom toggle switch styling */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  background-image: linear-gradient(90deg, #007bff, #00d4ff); /* Light mode gradient */
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-image 0.4s; /* Smooth transition for background change */
+}
+
+/* Toggle thumb (the circle) */
+.toggle-thumb {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.4s; /* Smooth transition for thumb movement */
+}
+
+/* Move thumb to the right when checked */
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb {
+  left: 24px;
+}
+
+/* Change background when checked (dark mode) */
+#theme-toggle-checkbox:checked + .toggle-switch {
+  background-image: linear-gradient(90deg, #bb86fc, #3700b3); /* Dark mode gradient */
+}
+
+/* Sun and Moon icons for theme toggle */
+.toggle-thumb .sun {
+  display: none; /* Hidden by default */
+}
+
+#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .sun {
+  display: block;
+}
+
+#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .moon {
+  display: none;
+}
+
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .sun {
+  display: none;
+}
+
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .moon {
+  display: block;
+}
+
+
+/* Main Body Styles */
+main {
+  flex: 1;
+  padding: 3rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    display: none;
+  }
+
+  .theme-toggle {
+    margin-top: 1rem;
+  }
+
+  /* Show hamburger on small screens */
+  .hamburger {
+    display: flex;
+  }
+}
+
+.hamburger.active span {
+  background-image: var(--primary-gradient); /* Gradient for hamburger lines */
+  background-clip: text;
+  color: transparent;
+}

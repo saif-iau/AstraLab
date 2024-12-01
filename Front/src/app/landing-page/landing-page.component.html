@@ -1,0 +1,47 @@
+<div class="landing-page">
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Astra Lab!</h1>
+    <p>Your one-stop solution for Collaborative API Testing.</p>
+    <button (click)="navigateTo('')">Get Started</button>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Why Choose Astra Lab?</h2>
+    <div class="feature-list">
+      <div class="feature-item">
+        <h3>Collaborative Testing</h3>
+        <p>Seamlessly collaborate on API testing with your team in real-time.</p>
+      </div>
+      <div class="feature-item">
+        <h3>Robust Analytics</h3>
+        <p>Gain actionable insights and optimize API performance.</p>
+      </div>
+      <div class="feature-item">
+        <h3>User-Friendly Interface</h3>
+        <p>Enjoy an intuitive design tailored for developers and teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <input
+      type="checkbox"
+      id="theme-toggle-checkbox"
+      [checked]="isDarkMode"
+      (change)="toggleTheme()"
+    />
+    <label for="theme-toggle-checkbox" class="toggle-switch">
+      <span class="toggle-thumb"></span>
+    </label>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <a routerLink="/about">About</a>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  </footer>
+</div>

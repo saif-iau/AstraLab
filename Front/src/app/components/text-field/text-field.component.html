@@ -1,0 +1,11 @@
+<div class="text-field-container">
+  <label *ngIf="label" class="text-field-label">{{ label }}</label>
+  <input
+    type="text"
+    class="text-field-input"
+    [(ngModel)]="value"
+    [placeholder]="placeholder"
+    [attr.theme]="theme"
+    [ngStyle]="{ height: height, borderRadius: borderRadius, width: width }"
+  />
+</div>

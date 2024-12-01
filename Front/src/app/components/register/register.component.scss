@@ -1,0 +1,105 @@
+/* Global box-sizing for consistent sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.form-row {
+  display: flex;
+  gap: 16px; /* Adjust the gap between fields as needed */
+}
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 20px auto; /* Center the container */
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.register-content {
+  width: 100%;
+}
+
+.register-title {
+  color: var(--text-color);
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-input {
+  width: 100%; /* Full width within the container */
+  max-width: 350px; /* Limit maximum width */
+  padding: 10px;
+  border: 2px solid var(--text-color);
+  border-radius: 7px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0 auto;
+  display: block;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: red;
+}
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: red;
+}

@@ -1,0 +1,50 @@
+<div class="register-container " >
+
+    <div class="register-content">
+
+      <h2>Register</h2>
+
+     <div class="form-row">
+
+      <div class="form-group">
+        <label class="form-label" for="firstName">First Name</label>
+        <input class="form-input" type="text" [(ngModel)]="firstName" placeholder="Enter your first name" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="lastName">Last Name</label>
+        <input class="form-input" type="text" [(ngModel)]="lastName" placeholder="Enter your last name" />
+      </div>
+
+
+     </div>
+      <div class="form-group">
+        <label class="form-label" for="userName">User name</label>
+        <input class="form-input" type="text" [(ngModel)]="userName" placeholder="Enter your username" />
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email</label>
+        <input  class="form-input" type="email" [(ngModel)]="email" placeholder="Enter your email" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="country">Country</label>
+        <input class="form-input" type="text" [(ngModel)]="country" placeholder="Enter your country" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-input" type="password" [(ngModel)]="password" placeholder="Enter your password" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="confirmPassword">Confirm Password</label>
+        <input class="form-input" type="password" [(ngModel)]="confirmPassword" placeholder="Confirm your password" />
+      </div>
+
+      <button class="submit-button" (click)="register()">Register</button>
+      <a class="link" (click)="goToLogin()">Go To Login</a>
+    </div>
+
+</div>

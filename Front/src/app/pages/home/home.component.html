@@ -1,0 +1,15 @@
+<div [ngClass]="{ 'dark-mode': isDarkMode }">
+  <!-- Your content here -->
+  <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-spin-clockwise"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+    <app-request (onSendRequest)="sendRequest($event)"></app-request>
+    <app-response [response]="response"></app-response>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="response-container">
+  <h2>API Response</h2>
+  <div *ngIf="response">
+    <h3>Status: {{ response.data.statusCode }}</h3>
+    <pre>{{ response.data.response | json }}</pre>
+  </div>
+  <div *ngIf="!response">
+    <p>No response yet.</p>
+  </div>
+</div>

@@ -1,0 +1,169 @@
+@import '../../styles.scss'; // Adjust path based on your project
+
+.landing-page {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
+
+  position: relative; /* Required for pseudo-element positioning */
+  z-index: 0; /* Ensure content stays above pseudo-element */
+
+  /* Set inner content with a solid border color */
+  border-radius: 15px; /* Optional rounded corners */
+  overflow: hidden; /* Hide the overflow of the pseudo-element */
+  /* Border wrapper with animation */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit; /* Match parent border radius */
+    padding: 20px; /* Border thickness */
+    background: linear-gradient(90deg, #007bff, #00d4ff, #bb86fc, #3700b3);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1; /* Place behind the content */
+  }
+  .hero {
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      // background-image: var(--primary-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: var(--text-color);
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: $border-radius;
+      background-image: var(--primary-gradient);
+      color: var(--text-color);
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .features {
+    .feature-list {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1rem;
+
+      .feature-item {
+        max-width: 200px;
+
+        h3 {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .footer {
+    margin-top: 2rem;
+
+    a {
+      margin: 0 1rem;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+  }
+}
+
+/* Keyframe animation for gradient */
+@keyframes gradient-border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Theme Toggle Container */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Hide the original checkbox */
+#theme-toggle-checkbox {
+  display: none;
+}
+
+/* Custom toggle switch styling */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  background-image: linear-gradient(90deg, #007bff, #00d4ff); /* Light mode gradient */
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-image 0.4s; /* Smooth transition for background change */
+}
+
+/* Toggle thumb (the circle) */
+.toggle-thumb {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.4s; /* Smooth transition for thumb movement */
+}
+
+/* Move thumb to the right when checked */
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb {
+  left: 24px;
+}
+
+/* Change background when checked (dark mode) */
+#theme-toggle-checkbox:checked + .toggle-switch {
+  background-image: linear-gradient(90deg, #bb86fc, #3700b3); /* Dark mode gradient */
+}
+
+/* Sun and Moon icons for theme toggle */
+.toggle-thumb .sun {
+  display: none; /* Hidden by default */
+}
+
+#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .sun {
+  display: block;
+}
+
+#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .moon {
+  display: none;
+}
+
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .sun {
+  display: none;
+}
+
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .moon {
+  display: block;
+}

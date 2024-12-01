@@ -1,0 +1,56 @@
+.text-field-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.text-field-label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.text-field-input {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 12px; // Rounded corners
+  background-color: var(--input-background, #fff);
+  border: 4px solid transparent; // Thicker border, but invisible initially
+  outline: none;
+  transition: border 0.3s ease;
+
+  background-clip: padding-box; // Ensures the background stays inside the padding
+  box-shadow: 0 0 0 2px transparent, 0 0 0 6px rgba(0, 0, 0, 0.05); // Adds a subtle shadow
+
+  // Set the gradient for the border
+  &:focus {
+    border: 4px solid transparent; // Keeps the padding box clipping intact
+    background-clip: padding-box;
+    box-shadow: 0 0 0 2px transparent, 0 0 0 6px rgba(0, 0, 0, 0.1);
+
+    background-origin: border-box; // To ensure the gradient only affects the border
+    background-clip: padding-box, border-box;
+    transition: all 0.3s ease;
+  }
+
+  // Dark theme
+  &[theme='dark'] {
+    background-color: #2b2b2b;
+    color: #fff;
+
+    &:focus {
+      background-image: linear-gradient(#2b2b2b, #2b2b2b), linear-gradient(to right, #3b82f6, #9333ea); // Dark theme gradient
+    }
+  }
+
+  // Light theme
+  &[theme='light'] {
+    background-color: #f5f5f5;
+    color: #333;
+
+    &:focus {
+      background-image: linear-gradient(#f5f5f5, #f5f5f5), linear-gradient(90deg, #007bff, #00d4ff); // Light theme gradient
+    }
+  }
+}

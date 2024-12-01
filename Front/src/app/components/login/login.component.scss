@@ -1,0 +1,162 @@
+/* Global box-sizing for consistent sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 20px auto; /* Center the container */
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-content {
+  width: 100%;
+}
+
+.login-title {
+  color: var(--text-color);
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-input {
+  width: 100%; /* Full width within the container */
+  max-width: 350px; /* Limit maximum width */
+  padding: 10px;
+  border: 2px solid var(--text-color);
+  border-radius: 7px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0 auto;
+  display: block;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  opacity: 0.9;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.link {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: red;
+}
+
+/* Theme Toggle Container */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Hide the original checkbox */
+#theme-toggle-checkbox {
+  display: none;
+}
+
+/* Custom toggle switch styling */
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  background-image: linear-gradient(90deg, #007bff, #00d4ff); /* Light mode gradient */
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-image 0.4s; /* Smooth transition for background change */
+}
+
+/* Toggle thumb (the circle) */
+.toggle-thumb {
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.4s; /* Smooth transition for thumb movement */
+}
+
+/* Move thumb to the right when checked */
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb {
+  left: 24px;
+}
+
+/* Change background when checked (dark mode) */
+#theme-toggle-checkbox:checked + .toggle-switch {
+  background-image: linear-gradient(90deg, #bb86fc, #3700b3); /* Dark mode gradient */
+}
+
+/* Sun and Moon icons for theme toggle */
+.toggle-thumb .sun {
+  display: none; /* Hidden by default */
+}
+
+#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .sun {
+  display: block;
+}
+
+#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .moon {
+  display: none;
+}
+
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .sun {
+  display: none;
+}
+
+#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .moon {
+  display: block;
+}

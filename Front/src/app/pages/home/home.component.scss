@@ -1,0 +1,27 @@
+/* Main content area */
+main {
+  flex: 1;
+  padding-top: 80px; /* Add space equivalent to the header height */
+  overflow: hidden;
+
+}
+
+/* Scrollable component for individual sections */
+.scrollable-component {
+  height: calc(100vh - 100px); /* Adjust height based on the header size */
+  overflow-y: auto; /* Allow vertical scrolling */
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  // transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scroll behavior */
+.scrollable-component::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-component::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}

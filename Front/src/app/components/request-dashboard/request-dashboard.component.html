@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="dashboard-container">
+  <h2>User Requests</h2>
+
+  <!-- Loading Indicator -->
+  <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-spin-clockwise"
+  >
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+
+  <!-- Requests List -->
+  <div *ngIf="!loading && requests.length > 0; else noRequests">
+    <div *ngFor="let request of requests" class="request-card">
+      <h3>
+        <span class="method-box" [ngClass]="getMethodClass(request.method)">
+          {{ request.method }}
+        </span>
+        - <a [href]="request.pageUrl" target="_blank">{{ request.pageUrl }}</a>
+      </h3>
+      <p><strong>Description:</strong> {{ request.description }}</p>
+      <p><strong>Status Code:</strong> {{ request.statusCode }}</p>
+      <p><strong>Response Time:</strong> {{ request.responseTime }} ms</p>
+
+      <h4>Headers:</h4>
+      <ul>
+        <li *ngFor="let header of request.headers">{{ header.key }}: {{ header.value }}</li>
+      </ul>
+
+      <h4>Response Data:</h4>
+      <pre>{{ request.responseData | json }}</pre>
+    </div>
+  </div>
+
+  <ng-template #noRequests>
+    <p *ngIf="!loading">No user requests found.</p>
+  </ng-template>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

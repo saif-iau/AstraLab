@@ -1,0 +1,41 @@
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <img [src]="logoUrl" alt="Logo" />
+
+      <span class="title">Astra Lab</span>
+    </div>
+
+    <div class="hamburger" (click)="toggleNav()">
+      <!-- Hamburger icon (3 lines) -->
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul class="nav-links" [class.active]="navOpen">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New Request</a></li>
+      <li><a routerLink="/requestDashboard" routerLinkActive="active">Request Dashboard</a></li>
+      <li><a routerLink="/workPlaceForm" routerLinkActive="active">Work Place Form</a></li>
+
+      <!-- <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!(isLoggedIn$ | async)"><a routerLink="/register">Register</a></li> -->
+      <li *ngIf="isLoggedIn$ | async"><a (click)="logout()">Logout</a></li>
+
+
+    </ul>
+
+    <div class="theme-toggle">
+      <input
+        type="checkbox"
+        id="theme-toggle-checkbox"
+        [checked]="isDarkMode"
+        (change)="toggleTheme()"
+      />
+      <label for="theme-toggle-checkbox" class="toggle-switch">
+        <span class="toggle-thumb">
+        </span>
+      </label>
+    </div>
+  </nav>
+</header>
