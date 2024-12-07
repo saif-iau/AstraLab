@@ -51,9 +51,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout(); // Call the logout method in AuthService
-    this.router.navigate(['/landing']); // Redirect to the login page or home
+    this.authService.logout();
+    this.navOpen = false; // Close the nav menu
+    this.router.navigate(['/landing']);
   }
+
+
 
 
 }

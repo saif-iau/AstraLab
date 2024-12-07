@@ -11,9 +11,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 export const routes: Routes = [
-  { path: 'landing', component: LandingPageComponent },
+  { path: '', component: LandingPageComponent },
 
-  { path: '', component: HomeComponent ,  canActivate: [AuthGuard]}, // Protects the route}, // Default route
+  { path: 'home', component: HomeComponent ,  canActivate: [AuthGuard]}, // Protects the route}, // Default route
   { path: 'about', component: AboutComponent }, // Route to About page
   { path: 'requestDashboard', component: RequestDashboardComponent ,canActivate: [AuthGuard] }, // Route to About page
   // { path: 'workPlaceForm', component: WorkPlaceFormComponent ,canActivate: [AuthGuard] }, // Route to About page

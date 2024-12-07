@@ -81,6 +81,7 @@ const login = async (req, res) => {
 
 
 const refreshToken = (req, res) => {
+  console.log("gg")
     const refreshToken = req.cookies.refreshToken; // Securely stored HttpOnly cookie
   
     if (!refreshToken) return res.status(401).json({ message: 'Refresh token missing' });

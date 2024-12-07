@@ -1,7 +1,7 @@
 <div class="login-container">
   <div class="login-content">
     <h2 class="login-title">Login</h2>
-    <div class="theme-toggle">
+    <!-- <div class="theme-toggle">
       <input
         type="checkbox"
         id="theme-toggle-checkbox"
@@ -12,7 +12,7 @@
         <span class="toggle-thumb">
         </span>
       </label>
-    </div>
+    </div> -->
     <form>
       <div class="form-group">
         <label class="form-label" for="login">Username or Email</label>
@@ -39,7 +39,7 @@
         />
       </div>
       <button type="submit" class="submit-button" (click)="login()">Login</button>
-      <div class="checkbox-container">
+      <!-- <div class="checkbox-container">
         <input
           type="checkbox"
           [(ngModel)]="rememberMe"
@@ -47,7 +47,7 @@
           id="rememberMe"
         />
         <label for="rememberMe">Keep Me Logged In</label>
-      </div>
+      </div> -->
       <a class="link" (click)="goToRegister()">Go To Register</a>
     </form>
   </div>

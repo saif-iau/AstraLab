@@ -4,11 +4,12 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { HeaderComponent } from '../header/header.component';
+import { Router, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-request-dashboard',
   standalone: true,
-  imports: [CommonModule, NgxSpinnerModule , HeaderComponent ],
+  imports: [CommonModule, NgxSpinnerModule , HeaderComponent , RouterLinkActive ],
   templateUrl: './request-dashboard.component.html',
   styleUrls: ['./request-dashboard.component.scss']
 })
@@ -20,7 +21,8 @@ export class RequestDashboardComponent implements OnInit {
   constructor(
     private requestService: RequestService,
     private authService: AuthService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,29 +38,41 @@ export class RequestDashboardComponent implements OnInit {
         return 'put';
       case 'DELETE':
         return 'delete';
+        case 'OPTIONS':
+        return 'options';
+        case 'PATCH':
+        return 'patch';
+        case 'HEAD':
+        return 'head';
       default:
         return ''; // fallback if needed
     }
   }
   fetchRequests(): void {
     this.loading = true;
-    this.spinner.show(); // Show spinner when starting the request
-    const user = this.authService.getDecodedUser(); // Replace with your method to get user ID
+    this.spinner.show();
+    const user = this.authService.getDecodedUser();
     const id = user.id;
 
     this.requestService.getRequests(id).subscribe({
       next: (response) => {
         this.requests = response.data;
         this.loading = false;
-        this.spinner.hide(); // Hide spinner after getting the response
+        this.spinner.hide();
       },
       error: (error) => {
-        console.error('Error fetching requests:', error);
         this.loading = false;
-        this.spinner.hide(); // Hide spinner if there's an error
-        this.errorMessage = 'Failed to load requests. Please try again later.'; // Set error message
-      }
+        this.spinner.hide();
+        if (error.status === 401) {
+          this.authService.logout();
+          this.errorMessage = 'Session expired. Redirecting to login...';
+          setTimeout(() => this.router.navigate(['/']), 2000); // Delay redirection to show message
+        } else {
+          this.errorMessage = 'Failed to load requests. Please try again later.';
+        }
+      },
     });
   }
+
 
 }
