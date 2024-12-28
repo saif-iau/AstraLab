@@ -11,10 +11,16 @@
     </div>
 
     <ul class="nav-links" [class.active]="navOpen">
-      <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Quick Request</a></li>
-      <li><a routerLink="/requestDashboard" routerLinkActive="active">My Quick Requests</a></li>
-      <li><a routerLink="/workPlaceForm" routerLinkActive="active">My Dashboard</a></li>
 
+
+      <li *ngIf="(isLoggedIn$ | async)">
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Quick Request</a>
+      </li>
+      <li *ngIf="(isLoggedIn$ | async)">
+        <a routerLink="/requestDashboard" routerLinkActive="active">My Quick Requests</a>
+      </li><li *ngIf="(isLoggedIn$ | async)">
+        <a routerLink="/workPlaceForm" routerLinkActive="active">My Dashboard</a>
+      </li>
       <!-- Show Login and Register if logged out -->
       <li *ngIf="!(isLoggedIn$ | async)">
         <a routerLink="/login" routerLinkActive="active">Login</a>

@@ -2,13 +2,14 @@
 <div class="landing-page">
   <!-- Hero Section -->
   <section class="hero">
-    <div class="logo">
-      <img [src]="logoUrl" alt="Logo" />
-
+    <div class="hero-content">
+      <div class="logo">
+        <img [src]="logoUrl" alt="Logo" />
+      </div>
+      <h1>Welcome to Astra Lab!</h1>
+      <p>Your one-stop solution for Collaborative API Testing.</p>
+      <button class="btn btn-primary" (click)="navigateTo('home')">Get Started</button>
     </div>
-    <h1>Welcome to Astra Lab!</h1>
-    <p>Your one-stop solution for Collaborative API Testing.</p>
-    <button (click)="navigateTo('home')">Get Started</button>
   </section>
 
   <!-- Features Section -->
@@ -16,24 +17,25 @@
     <h2>Why Choose Astra Lab?</h2>
     <div class="feature-list">
       <div class="feature-item">
+        <i class="icon fas fa-users"></i>
         <h3>Collaborative Testing</h3>
         <p>Seamlessly collaborate on API testing with your team in real-time.</p>
       </div>
       <div class="feature-item">
+        <i class="icon fas fa-chart-line"></i>
         <h3>Robust Analytics</h3>
         <p>Gain actionable insights and optimize API performance.</p>
       </div>
       <div class="feature-item">
+        <i class="icon fas fa-laptop-code"></i>
         <h3>User-Friendly Interface</h3>
         <p>Enjoy an intuitive design tailored for developers and teams.</p>
       </div>
     </div>
   </section>
 
-
-
   <!-- Footer -->
   <footer class="footer">
-
+    <p>&copy; 2023 Astra Lab. All rights reserved.</p>
   </footer>
 </div>

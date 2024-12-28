@@ -9,6 +9,7 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     const token = localStorage.getItem('token'); // Directly access the token without relying on AuthService
+    console.log(token)
     if (token) {
       console.log(token)
       console.log('Token found, allowing access');

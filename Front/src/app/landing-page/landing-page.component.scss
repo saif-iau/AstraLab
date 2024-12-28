@@ -1,170 +1,92 @@
-@import '../../styles.scss'; // Adjust path as needed
-
+/* filepath: /c:/Users/User/Desktop/Project 1/Front/src/app/landing-page/landing-page.component.scss */
 .landing-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-  overflow-y: auto; /* Make the container scrollable */
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.hero {
+  background: url('/assets/hero-bg.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
   text-align: center;
-  padding: 2rem;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  position: relative;
-  z-index: 0;
-  border-radius: 15px;
-  overflow: hidden;
-
-  /* Animated border effect */
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: inherit;
-    padding: 20px;
-    background: linear-gradient(90deg, #007bff, #00d4ff, #bb86fc, #3700b3);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: -1;
-  }
-
-  .hero {
-    margin-bottom: 2rem;
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: var(--text-color);
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 15px;
-      background-image: var(--primary-gradient);
-      color: var(--text-color);
-      cursor: pointer;
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-  }
-
-  .features {
-    .feature-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 1rem;
-      gap: 1.5rem;
-
-      .feature-item {
-        max-width: 200px;
-
-        h3 {
-          font-size: 1.2rem;
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
-  }
-
-  /* Theme Toggle Container */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  padding: 100px 20px;
 }
 
-/* Hide the original checkbox */
-#theme-toggle-checkbox {
-  display: none;
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* Custom toggle switch styling */
-.toggle-switch {
-  position: relative;
-  width: 50px;
-  height: 25px;
-  background-image: linear-gradient(90deg, #007bff, #00d4ff); /* Light mode gradient */
-  border-radius: 25px;
+.hero .logo img {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.hero .btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-image 0.4s; /* Smooth transition for background change */
 }
 
-/* Toggle thumb (the circle) */
-.toggle-thumb {
-  position: absolute;
-  width: 23px;
-  height: 23px;
-  border-radius: 50%;
-  background-color: white;
-  top: 1px;
-  left: 1px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.features {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+
+.feature-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: left 0.4s; /* Smooth transition for thumb movement */
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-/* Move thumb to the right when checked */
-#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb {
-  left: 24px;
+.feature-item {
+  max-width: 300px;
+  margin-bottom: 30px;
 }
 
-/* Change background when checked (dark mode) */
-#theme-toggle-checkbox:checked + .toggle-switch {
-  background-image: linear-gradient(90deg, #bb86fc, #3700b3); /* Dark mode gradient */
+.feature-item .icon {
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #007bff;
 }
 
-/* Sun and Moon icons for theme toggle */
-.toggle-thumb .sun {
-  display: none; /* Hidden by default */
+.feature-item h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
 }
 
-#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .sun {
-  display: block;
+.feature-item p {
+  font-size: 1em;
 }
 
-#theme-toggle-checkbox:not(:checked) + .toggle-switch .toggle-thumb .moon {
-  display: none;
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #e9ecef;
 }
 
-#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .sun {
-  display: none;
-}
-
-#theme-toggle-checkbox:checked + .toggle-switch .toggle-thumb .moon {
-  display: block;
-}
-
-  .footer {
-    margin-top: auto;
-    a {
-      margin: 0 1rem;
-      color: var(--text-color);
-      text-decoration: none;
-    }
-  }
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .landing-page {
-    padding: 1rem;
-  }
-
-  .features .feature-list {
-    flex-direction: column;
-    align-items: center;
-  }
+.footer p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #6c757d;
 }
