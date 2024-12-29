@@ -16,7 +16,6 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent ,  canActivate: [AuthGuard]}, // Protects the route}, // Default route
   { path: 'about', component: AboutComponent }, // Route to About page
   { path: 'requestDashboard', component: RequestDashboardComponent ,canActivate: [AuthGuard] }, // Route to About page
-  // { path: 'workPlaceForm', component: WorkPlaceFormComponent ,canActivate: [AuthGuard] }, // Route to About page
 
   { path: 'login', component: LoginComponent }, // Login route
   { path: 'register', component: RegisterComponent }, // Register route

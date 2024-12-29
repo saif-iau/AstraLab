@@ -1,6 +1,6 @@
 <div class="container">
-
   <main>
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
     <router-outlet></router-outlet>
   </main>
 </div>
