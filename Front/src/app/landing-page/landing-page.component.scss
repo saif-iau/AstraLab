@@ -1,40 +1,49 @@
 /* filepath: /c:/Users/User/Desktop/Project 1/Front/src/app/landing-page/landing-page.component.scss */
 .landing-page {
   font-family: 'Arial', sans-serif;
-  color: #333;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
-.hero {
-  background: var(--background-color);
-  background-size: cover;
+.hero, .features, .about, .contact {
+  background-color: var(--background-color);
   color: var(--text-color);
   text-align: center;
   padding: 100px 20px;
+  margin-bottom: 50px; /* Added margin */
+  opacity: 0;
+  transform: translateY(20px);
+
 }
 
-.hero-content {
+.hero.visible, .features.visible, .about.visible, .contact.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-content, .feature-list, .about-content, .contact-content {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.hero .logo img {
-  max-width: 200px; /* Adjusted max-width */
+.hero .logo img, .features .logo img, .about .logo img, .contact .logo img {
+  max-width: 200px;
   width: 100%;
   height: auto;
   margin-bottom: 20px;
 }
 
-.hero h1 {
+.hero h1, .features h2, .about h2, .contact h2 {
   font-size: 2.5em;
   margin-bottom: 20px;
 }
 
-.hero p {
+.hero p, .features p, .about p, .contact p {
   font-size: 1.2em;
   margin-bottom: 30px;
 }
 
-.hero .btn {
+.hero .btn, .features .btn, .about .btn, .contact .btn {
   padding: 10px 20px;
   font-size: 1em;
   background-color: #007bff;
@@ -42,18 +51,6 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.features {
-  padding: 50px 20px;
-  text-align: center;
-  color: var(--text-color);
-
-}
-
-.features h2 {
-  font-size: 2em;
-  margin-bottom: 40px;
 }
 
 .feature-list {
@@ -65,14 +62,12 @@
 .feature-item {
   max-width: 300px;
   margin-bottom: 30px;
-  color: var(--text-color);
-
 }
 
 .feature-item .icon {
   font-size: 50px;
   margin-bottom: 20px;
-  color: var(--text-color);
+  color: #007bff;
 }
 
 .feature-item h3 {
@@ -86,6 +81,7 @@
 
 .footer {
   background-color: var(--background-color);
+  color: var(--text-color);
   padding: 20px;
   text-align: center;
   border-top: 1px solid #e9ecef;
@@ -95,6 +91,13 @@
   margin: 0;
   font-size: 0.9em;
   color: var(--text-color);
+}
 
-
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

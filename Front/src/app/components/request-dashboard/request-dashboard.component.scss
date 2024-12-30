@@ -1,3 +1,4 @@
+/* filepath: /c:/Users/User/Desktop/Project 1/Front/src/app/components/request-dashboard/request-dashboard.component.scss */
 .dashboard-container {
   padding: 16px;
   max-width: 1200px;
@@ -8,6 +9,37 @@
   h2 {
     color: var(--text-color);
     margin-bottom: 20px;
+  }
+
+  .view-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    label {
+      margin-right: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      background-color: var(--background-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"]:checked + & {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+    }
   }
 
   .request-card {
@@ -51,7 +83,7 @@
         background-color: #795548; // Brown for OPTIONS
       }
       .head {
-        background-color: #c2b723; // Brown for OPTIONS
+        background-color: #c2b723; // Yellow for HEAD
       }
     }
 
@@ -80,5 +112,88 @@
       border-radius: 8px;
       background-color: rgba(0, 0, 0, 0.08);
     }
+  }
+
+  .table-container {
+    overflow-x: auto; /* Add horizontal scroll */
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    background-color: var(--background-color);
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      text-align: left;
+      max-width: 200px; /* Set max-width for cells */
+      white-space: nowrap; /* Prevent text from wrapping */
+      overflow: hidden; /* Hide overflow */
+      text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    }
+
+    th {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    td .method-box {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    td ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 4px 0;
+      }
+    }
+
+    td pre {
+      max-height: 200px; /* Limit height for scrollability */
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+
+
+    &:disabled {
+      background-color: var(--background-color);
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: var(--primary-color-dark);
+    }
+  }
+
+  span {
+    font-weight: bold;
+    color: var(--text-color);
   }
 }

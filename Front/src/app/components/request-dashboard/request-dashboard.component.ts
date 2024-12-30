@@ -5,19 +5,24 @@ import { CommonModule } from '@angular/common';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { HeaderComponent } from '../header/header.component';
 import { Router, RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-request-dashboard',
   standalone: true,
-  imports: [CommonModule, NgxSpinnerModule , HeaderComponent , RouterLinkActive ],
+  imports: [CommonModule, NgxSpinnerModule , HeaderComponent , RouterLinkActive , FormsModule ],
   templateUrl: './request-dashboard.component.html',
   styleUrls: ['./request-dashboard.component.scss']
 })
 export class RequestDashboardComponent implements OnInit {
   requests: any[] = [];
+  paginatedRequests: any[] = [];
   loading: boolean = false;
   errorMessage: string = '';
-
+  viewMode: string = 'list'; // Default view mode
+  currentPage: number = 1;
+  pageSize: number = 3; // Number of items per page
+  totalPages: number = 1;
   constructor(
     private requestService: RequestService,
     private authService: AuthService,
@@ -48,6 +53,27 @@ export class RequestDashboardComponent implements OnInit {
         return ''; // fallback if needed
     }
   }
+  updatePaginatedRequests(): void {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.paginatedRequests = this.requests.slice(startIndex, endIndex);
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePaginatedRequests();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePaginatedRequests();
+    }
+  }
+
+
   fetchRequests(): void {
     this.loading = true;
     this.spinner.show();
@@ -57,6 +83,8 @@ export class RequestDashboardComponent implements OnInit {
     this.requestService.getRequests(id).subscribe({
       next: (response) => {
         this.requests = response.data;
+        this.totalPages = Math.ceil(this.requests.length / this.pageSize);
+        this.updatePaginatedRequests();
         this.loading = false;
         this.spinner.hide();
       },
