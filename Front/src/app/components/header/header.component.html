@@ -19,7 +19,7 @@
       <li *ngIf="(isLoggedIn$ | async)">
         <a routerLink="/requestDashboard" routerLinkActive="active">My Quick Requests</a>
       </li><li *ngIf="(isLoggedIn$ | async)">
-        <a routerLink="/workPlaceForm" routerLinkActive="active">My Dashboard</a>
+        <a routerLink="/Mydashboard" routerLinkActive="active">My Dashboard</a>
       </li>
       <!-- Show Login and Register if logged out -->
       <li *ngIf="!(isLoggedIn$ | async)">
@@ -28,6 +28,10 @@
       <li *ngIf="!(isLoggedIn$ | async)">
         <a routerLink="/register" routerLinkActive="active">Register</a>
       </li>
+
+      <li *ngIf="!(isLoggedIn$ | async)"><a href="#features">Features</a></li>
+      <li *ngIf="!(isLoggedIn$ | async)"><a href="#about">About Us</a></li>
+      <li *ngIf="!(isLoggedIn$ | async)"><a href="#contact">Contact</a></li>
 
       <!-- Show Logout if logged in -->
       <li *ngIf="isLoggedIn$ | async">

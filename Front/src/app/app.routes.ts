@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RequestDashboardComponent } from './components/request-dashboard/request-dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent ,  canActivate: [AuthGuard]}, // Protects the route}, // Default route
   { path: 'about', component: AboutComponent }, // Route to About page
   { path: 'requestDashboard', component: RequestDashboardComponent ,canActivate: [AuthGuard] }, // Route to About page
+  { path: 'Mydashboard', component: DashboardComponent ,canActivate: [AuthGuard] }, // Route to About page
 
   { path: 'login', component: LoginComponent }, // Login route
   { path: 'register', component: RegisterComponent }, // Register route

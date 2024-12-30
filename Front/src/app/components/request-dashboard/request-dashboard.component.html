@@ -2,35 +2,93 @@
 <div class="dashboard-container">
   <h2>User Requests</h2>
 
+  <!-- View Mode Toggle -->
+  <div class="view-toggle">
+    <label>
+      <input type="radio" name="viewMode" value="list" [(ngModel)]="viewMode" /> List View
+    </label>
+    <label>
+      <input type="radio" name="viewMode" value="table" [(ngModel)]="viewMode" /> Table View
+    </label>
+  </div>
+ <!-- Pagination Controls -->
+ <div class="pagination-controls" *ngIf="!loading && requests.length > pageSize">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
   <!-- Loading Indicator -->
+  <div *ngIf="loading">Loading...</div>
 
+  <!-- Requests List View -->
+  <div *ngIf="!loading && viewMode === 'list'">
+    <div *ngIf="paginatedRequests.length > 0; else noRequests">
+      <div *ngFor="let request of paginatedRequests" class="request-card">
+        <h3>
+          <span class="method-box" [ngClass]="getMethodClass(request.method)">
+            {{ request.method }}
+          </span>
+          - <a [href]="request.pageUrl" target="_blank">{{ request.pageUrl }}</a>
+        </h3>
+        <p><strong>Description:</strong> {{ request.description }}</p>
+        <p><strong>Status Code:</strong> {{ request.statusCode }}</p>
+        <p><strong>Response Time:</strong> {{ request.responseTime }} ms</p>
 
-  <!-- Requests List -->
-  <div *ngIf="!loading && requests.length > 0; else noRequests">
-    <div *ngFor="let request of requests" class="request-card">
-      <h3>
-        <span class="method-box" [ngClass]="getMethodClass(request.method)">
-          {{ request.method }}
-        </span>
-        - <a [href]="request.pageUrl" target="_blank">{{ request.pageUrl }}</a>
-      </h3>
-      <p><strong>Description:</strong> {{ request.description }}</p>
-      <p><strong>Status Code:</strong> {{ request.statusCode }}</p>
-      <p><strong>Response Time:</strong> {{ request.responseTime }} ms</p>
+        <h4>Headers:</h4>
+        <ul>
+          <li *ngFor="let header of request.headers">{{ header.key }}: {{ header.value }}</li>
+        </ul>
 
-      <h4>Headers:</h4>
-      <ul>
-        <li *ngFor="let header of request.headers">{{ header.key }}: {{ header.value }}</li>
-      </ul>
-
-      <h4>Response Data:</h4>
-      <pre>{{ request.responseData | json }}</pre>
+        <h4>Response Data:</h4>
+        <pre>{{ request.responseData | json }}</pre>
+      </div>
     </div>
+  </div>
+
+  <!-- Requests Table View -->
+  <div class="table-container" *ngIf="!loading && viewMode === 'table'">
+    <table *ngIf="paginatedRequests.length > 0; else noRequests">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>URL</th>
+          <th>Description</th>
+          <th>Status Code</th>
+          <th>Response Time</th>
+          <th>Headers</th>
+          <th>Response Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of paginatedRequests">
+          <td>
+            <span class="method-box" [ngClass]="getMethodClass(request.method)">
+              {{ request.method }}
+            </span>
+          </td>
+          <td><a [href]="request.pageUrl" target="_blank">{{ request.pageUrl }}</a></td>
+          <td>{{ request.description }}</td>
+          <td>{{ request.statusCode }}</td>
+          <td>{{ request.responseTime }} ms</td>
+          <td>
+            <ul>
+              <li *ngFor="let header of request.headers">{{ header.key }}: {{ header.value }}</li>
+            </ul>
+          </td>
+          <td><pre>{{ request.responseData | json }}</pre></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls" *ngIf="!loading && requests.length > pageSize">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
   </div>
 
   <ng-template #noRequests>
     <p *ngIf="!loading">No user requests found.</p>
   </ng-template>
-
-  <p *ngIf="errorMessage">{{ errorMessage }}</p>
 </div>
