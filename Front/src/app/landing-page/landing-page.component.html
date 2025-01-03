@@ -40,11 +40,26 @@
     <p>Learn more about Astra Lab and our mission to provide the best API testing solutions.</p>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>Contact</h2>
-    <p>Get in touch with us for any queries or support.</p>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>If you have any questions or need support, feel free to reach out to us.</p>
+      <form (submit)="sendEmail($event)">
+        <div>
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="email" required />
+        </div>
+        <div>
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" name="subject" [(ngModel)]="subject" required />
+        </div>
+        <div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" [(ngModel)]="message" required></textarea>
+        </div>
+        <button type="submit">Send Email</button>
+      </form>
+    </section>
 
   <!-- Footer -->
   <footer class="footer">

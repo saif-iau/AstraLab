@@ -11,12 +11,12 @@ const generateTokens = (userId, rememberMe) => {
   }
 
   // Generate the access token (short-lived)
-  const accessToken = jwt.sign({ id: userId }, accessTokenSecret, { expiresIn: '3h' });
+  const accessToken = jwt.sign({ id: userId }, accessTokenSecret, { expiresIn: '1m' });
 
   let refreshToken;
   if (rememberMe) {
     // Generate the refresh token (longer-lived)
-    refreshToken = jwt.sign({ id: userId }, refreshTokenSecret, { expiresIn: '10h' });
+    refreshToken = jwt.sign({ id: userId }, refreshTokenSecret, { expiresIn: '1m' });
   }
 
   return { accessToken, refreshToken };
