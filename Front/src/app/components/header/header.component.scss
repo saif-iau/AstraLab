@@ -8,11 +8,11 @@
 /* Header and Navbar Styles */
 header {
   background-color: var(--background-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Navbar shadow */
+  // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Navbar shadow */
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Keeps header above other content */
+  // z-index: 1000; /* Keeps header above other content */
   // width: 100%;
 }
 

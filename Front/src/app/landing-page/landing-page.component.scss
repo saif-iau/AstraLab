@@ -13,7 +13,6 @@
   margin-bottom: 50px; /* Added margin */
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .hero.visible, .features.visible, .about.visible, .contact.visible {
@@ -46,7 +45,7 @@
 .hero .btn, .features .btn, .about .btn, .contact .btn {
   padding: 10px 20px;
   font-size: 1em;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -67,7 +66,7 @@
 .feature-item .icon {
   font-size: 50px;
   margin-bottom: 20px;
-  color: #007bff;
+  color: var(--primary-color);
 }
 
 .feature-item h3 {
@@ -87,7 +86,6 @@
   margin-bottom: 50px; /* Added margin */
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .about.visible {
@@ -112,7 +110,6 @@
   margin-bottom: 50px; /* Added margin */
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .contact.visible {
@@ -157,7 +154,7 @@
 .contact form button {
   padding: 10px 20px;
   font-size: 1em;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -169,7 +166,8 @@
   color: var(--text-color);
   padding: 20px;
   text-align: center;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid var(--border-color);
+
 }
 
 .footer p {

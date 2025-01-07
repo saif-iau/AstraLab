@@ -6,13 +6,20 @@ import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { HeaderComponent } from '../header/header.component';
 import { Router, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-request-dashboard',
   standalone: true,
-  imports: [CommonModule, NgxSpinnerModule , HeaderComponent , RouterLinkActive , FormsModule ],
+  imports: [
+    CommonModule,
+    NgxSpinnerModule,
+    HeaderComponent,
+    RouterLinkActive,
+    FormsModule,
+  ],
   templateUrl: './request-dashboard.component.html',
-  styleUrls: ['./request-dashboard.component.scss']
+  styleUrls: ['./request-dashboard.component.scss'],
 })
 export class RequestDashboardComponent implements OnInit {
   requests: any[] = [];
@@ -26,7 +33,7 @@ export class RequestDashboardComponent implements OnInit {
   constructor(
     private requestService: RequestService,
     private authService: AuthService,
-    private spinner: NgxSpinnerService,
+    private loadingService: LoadingService,
     private router: Router
   ) {}
 
@@ -43,11 +50,11 @@ export class RequestDashboardComponent implements OnInit {
         return 'put';
       case 'DELETE':
         return 'delete';
-        case 'OPTIONS':
+      case 'OPTIONS':
         return 'options';
-        case 'PATCH':
+      case 'PATCH':
         return 'patch';
-        case 'HEAD':
+      case 'HEAD':
         return 'head';
       default:
         return ''; // fallback if needed
@@ -57,6 +64,10 @@ export class RequestDashboardComponent implements OnInit {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.paginatedRequests = this.requests.slice(startIndex, endIndex);
+    this.loadingService.show();
+    setTimeout(() => {
+      this.loadingService.hide();
+    }, 600);
   }
 
   nextPage(): void {
@@ -73,10 +84,9 @@ export class RequestDashboardComponent implements OnInit {
     }
   }
 
-
   fetchRequests(): void {
     this.loading = true;
-    this.spinner.show();
+
     const user = this.authService.getDecodedUser();
     const id = user.id;
 
@@ -86,21 +96,19 @@ export class RequestDashboardComponent implements OnInit {
         this.totalPages = Math.ceil(this.requests.length / this.pageSize);
         this.updatePaginatedRequests();
         this.loading = false;
-        this.spinner.hide();
       },
       error: (error) => {
         this.loading = false;
-        this.spinner.hide();
+
         if (error.status === 401) {
           this.authService.logout();
           this.errorMessage = 'Session expired. Redirecting to login...';
           setTimeout(() => this.router.navigate(['/']), 2000); // Delay redirection to show message
         } else {
-          this.errorMessage = 'Failed to load requests. Please try again later.';
+          this.errorMessage =
+            'Failed to load requests. Please try again later.';
         }
       },
     });
   }
-
-
 }

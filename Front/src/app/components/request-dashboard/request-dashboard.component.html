@@ -3,14 +3,14 @@
   <h2>User Requests</h2>
 
   <!-- View Mode Toggle -->
-  <div class="view-toggle">
+  <!-- <div class="view-toggle">
     <label>
       <input type="radio" name="viewMode" value="list" [(ngModel)]="viewMode" /> List View
     </label>
     <label>
       <input type="radio" name="viewMode" value="table" [(ngModel)]="viewMode" /> Table View
     </label>
-  </div>
+  </div> -->
  <!-- Pagination Controls -->
  <div class="pagination-controls" *ngIf="!loading && requests.length > pageSize">
   <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
@@ -46,7 +46,7 @@
   </div>
 
   <!-- Requests Table View -->
-  <div class="table-container" *ngIf="!loading && viewMode === 'table'">
+  <!-- <div class="table-container" *ngIf="!loading && viewMode === 'table'">
     <table *ngIf="paginatedRequests.length > 0; else noRequests">
       <thead>
         <tr>
@@ -79,7 +79,7 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> -->
 
   <!-- Pagination Controls -->
   <div class="pagination-controls" *ngIf="!loading && requests.length > pageSize">
