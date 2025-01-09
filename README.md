@@ -1,29 +1,101 @@
-# AstraLab
 
-## Overview
+# Astralab
 
-This project is an Angular application designed to provide a user-friendly interface for managing and viewing user requests. The application includes features such as a list view and table view for displaying requests, pagination controls for navigating through requests, and a responsive design that adapts to different screen sizes.
+## Description
+
+Astralab is a web application that allows users to send HTTP requests with customizable headers, query parameters, and body content. It includes features such as JSON formatting and validation.
 
 ## Features
 
-- **List View and Table View**: Toggle between list and table views to display user requests.
-- **Pagination**: Navigate through requests using pagination controls.
-- **Responsive Design**: The application is designed to be responsive and works well on different screen sizes.
-- **Dark Mode and Light Mode**: The application supports both dark and light themes.
+- Send HTTP requests with customizable headers, query parameters, and body content.
+- Format JSON body content.
+- Validate JSON body content.
+- User-friendly interface with responsive design.
 
 ## Technologies Used
 
-- **Angular**: The primary framework used for building the application.
-- **SCSS**: Used for styling the application.
-- **NgxSpinner**: Used for displaying loading spinners.
-- **Angular Router**: Used for navigation within the application.
-- **Angular Forms**: Used for handling form inputs and validations.
+- Angular
+- TypeScript
+- SCSS
+- Toastr (for notifications)
 
 ## Installation
 
-To get started with the project, follow these steps:
-
-1. **Clone the repository**:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/your-username/astralab.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd astralab
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+1. Start the development server:
+   ```bash
+   ng serve
+   ```
+2. Open your browser and navigate to `http://localhost:4200`.
+
+## Components
+
+### RequestComponent
+
+This component allows users to input the URL, method, headers, query parameters, and body for an HTTP request. It includes a button to format the JSON body content.
+
+#### Inputs
+
+- `url`: The URL for the request.
+- `method`: The HTTP method (e.g., GET, POST).
+- `headers`: An array of headers for the request.
+- `queryParams`: An array of query parameters for the request.
+- `body`: The body content for the request.
+- `description`: A description of the request.
+
+#### Outputs
+
+- `onSendRequest`: Emits the request data when the request is sent.
+
+### Services
+
+#### JsonFormatterService
+
+This service provides methods to format and validate JSON content.
+
+- `formatBodyAsJson(body: string): string`: Formats the given body as JSON.
+- `isJsonFormatted(body: string): boolean`: Checks if the given body is valid JSON.
+
+## Styling
+
+The project uses SCSS for styling. The buttons and inputs are styled to be responsive and match the theme of the application.
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m 'Add some feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-branch
+   ```
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- [Angular](https://angular.io/)
+- [Toastr](https://github.com/CodeSeven/toastr)

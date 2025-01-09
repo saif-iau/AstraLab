@@ -14,13 +14,13 @@
 
 
       <li *ngIf="(isLoggedIn$ | async)">
-        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Quick Request</a>
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">New Request</a>
       </li>
       <li *ngIf="(isLoggedIn$ | async)">
-        <a routerLink="/requestDashboard" routerLinkActive="active">My Quick Requests</a>
-      </li><li *ngIf="(isLoggedIn$ | async)">
+        <a routerLink="/requestDashboard" routerLinkActive="active">My Requests</a>
+      <!-- </li><li *ngIf="(isLoggedIn$ | async)">
         <a routerLink="/Mydashboard" routerLinkActive="active">My Dashboard</a>
-      </li>
+      </li> -->
       <!-- Show Login and Register if logged out -->
       <li *ngIf="!(isLoggedIn$ | async)">
         <a routerLink="/login" routerLinkActive="active">Login</a>

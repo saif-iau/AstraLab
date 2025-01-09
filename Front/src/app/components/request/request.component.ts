@@ -2,11 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { JsonService } from '../../services/json.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-request',
-  imports:[CommonModule , FormsModule , HeaderComponent],
-  standalone:true,
+  imports: [CommonModule, FormsModule, HeaderComponent],
+  standalone: true,
   templateUrl: './request.component.html',
   styleUrls: ['./request.component.scss'],
 })
@@ -19,6 +21,11 @@ export class RequestComponent {
   @Input() description = '';
 
   @Output() onSendRequest = new EventEmitter<any>();
+
+  constructor(
+    private jsonService: JsonService,
+    private toastr: ToastrService
+  ) {}
 
   // Emit the request details
   sendRequest() {
@@ -47,5 +54,12 @@ export class RequestComponent {
   }
   removeQueryParam(index: number) {
     this.queryParams.splice(index, 1);
+  }
+
+  formatBody() {
+    if (!this.jsonService.isJsonFormatted(this.body)) {
+      this.toastr.error('Invalid JSON body');
+    }
+    this.body = this.jsonService.formatBodyAsJson(this.body);
   }
 }
